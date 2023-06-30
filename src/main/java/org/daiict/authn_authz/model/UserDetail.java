@@ -1,24 +1,22 @@
 package org.daiict.authn_authz.model;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class UserDetails {
+public class UserDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public UserDetails()
+    public UserDetail()
     {
     }
 
-    public UserDetails(String fullName, String email, String address, String qualification, String password, String role) {
+    public UserDetail(String fullName, String email, String address, String qualification, String password, String role) {
         this.fullName = fullName;
         this.email = email;
         this.address = address;
