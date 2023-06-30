@@ -11,6 +11,11 @@ import java.util.Collection;
 public class CustomUserDetails implements UserDetails {
 
     private UserDetail user;
+
+    public CustomUserDetails(UserDetail user) {
+        super();
+        this.user = user;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
