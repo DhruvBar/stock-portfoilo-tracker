@@ -37,7 +37,7 @@ public class HomeController {
     @PostMapping("/createUser")
     public String createuser(@ModelAttribute UserDetail user, HttpSession session)
     {
-        UserDetail userDetail = userService.createUser(user);
+
 
         boolean f = userService.checkEmail(user.getEmail());
         if(f)
@@ -46,6 +46,7 @@ public class HomeController {
         }
         else
         {
+            UserDetail userDetail = userService.createUser(user);
             if(userDetail!=null)
             {
                 session.setAttribute("msg","Registered successfully");
