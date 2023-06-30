@@ -36,15 +36,24 @@ public class HomeController {
     public String createuser(@ModelAttribute UserDetail user)
     {
         UserDetail userDetail = userService.createUser(user);
-        if(userDetail!=null)
+
+        boolean f = userService.checkEmail(user.getEmail());
+        if(f)
         {
-            System.out.println("Register Successfully");
+            System.out.println("Email id already exists");
         }
         else
         {
-            System.out.println("Something error in server");
-        }
+            if(userDetail!=null)
+            {
+                System.out.println("Register Successfully");
+            }
+            else
+            {
+                System.out.println("Something error in server");
+            }
 
+        }
         return "redirect:/register";
     }
 
