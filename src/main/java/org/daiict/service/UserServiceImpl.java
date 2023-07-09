@@ -1,7 +1,7 @@
-package org.daiict.authn_authz.service;
+package org.daiict.service;
 
-import org.daiict.authn_authz.model.UserDetail;
-import org.daiict.authn_authz.repository.UserRepository;
+import org.daiict.model.UserDetail;
+import org.daiict.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package org.daiict.authn_authz.repository;
+package org.daiict.repository;
 
-import org.daiict.authn_authz.model.UserDetail;
+import org.daiict.model.UserDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserDetail,Integer> {

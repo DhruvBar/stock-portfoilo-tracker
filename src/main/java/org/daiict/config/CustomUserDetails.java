@@ -1,6 +1,6 @@
-package org.daiict.authn_authz.config;
+package org.daiict.config;
 
-import org.daiict.authn_authz.model.UserDetail;
+import org.daiict.model.UserDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
