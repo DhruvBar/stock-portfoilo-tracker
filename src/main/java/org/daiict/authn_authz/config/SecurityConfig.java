@@ -50,11 +50,13 @@ public class SecurityConfig {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/**").permitAll()
+                .antMatchers("/stock/**").permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/signin")
-                .loginProcessingUrl("/login")
-                .successHandler(customSuccessHandler)
+                .httpBasic()
+//                .formLogin()
+//                .loginPage("/signin")
+//                .loginProcessingUrl("/login")
+//                .successHandler(customSuccessHandler)
                 .and()
                 .csrf().disable();
         http.authenticationProvider(getDaoAuthProvider());
