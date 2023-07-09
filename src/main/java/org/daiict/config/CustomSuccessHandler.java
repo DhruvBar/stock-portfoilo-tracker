@@ -1,4 +1,4 @@
-package org.daiict.authn_authz.config;
+package org.daiict.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

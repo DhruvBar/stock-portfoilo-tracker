@@ -1,4 +1,4 @@
-package org.daiict.authn_authz.controller;
+package org.daiict.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

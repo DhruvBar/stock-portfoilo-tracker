@@ -1,6 +1,6 @@
-package org.daiict.authn_authz.controller;
+package org.daiict.controller;
 
-import org.daiict.authn_authz.service.StockDataService;
+import org.daiict.service.StockDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

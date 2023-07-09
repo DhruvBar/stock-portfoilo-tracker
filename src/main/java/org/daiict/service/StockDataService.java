@@ -1,6 +1,6 @@
-package org.daiict.authn_authz.service;
+package org.daiict.service;
 
-import org.daiict.authn_authz.model.QuoteResponse;
+import org.daiict.model.QuoteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

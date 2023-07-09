@@ -1,7 +1,7 @@
-package org.daiict.authn_authz.service;
+package org.daiict.service;
 
 
-import org.daiict.authn_authz.model.UserDetail;
+import org.daiict.model.UserDetail;
 
 public interface UserService {
 

@@ -1,4 +1,4 @@
-package org.daiict.authn_authz.model;
+package org.daiict.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
