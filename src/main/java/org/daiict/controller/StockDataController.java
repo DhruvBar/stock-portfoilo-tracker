@@ -23,7 +23,7 @@ public class StockDataController {
     }
 
     @GetMapping("/search")
-    public List<SearchStockResponse.SearchStockResponseData> searhcStocks(@RequestParam("query") String query) {
+    public List<SearchStockResponse.SearchStockResponseData> searchStocks(@RequestParam("query") String query) {
         return stockData.searchStock(query);
     }
 }

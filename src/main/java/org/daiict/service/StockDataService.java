@@ -19,9 +19,15 @@ public class StockDataService {
     private ConfigProperties configProperties;
 
     public QuoteResponse.QuoteData getStockQuote(String symbol) {
-        String url = String.format("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=%s&apikey=%s", symbol, configProperties.getAlphaVantageApiKey());
-        QuoteResponse response = restTemplate.getForObject(url, QuoteResponse.class);
-        return response.getQuoteData();
+        try {
+            String url = String.format("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=%s&apikey=%s", symbol, configProperties.getAlphaVantageApiKey());
+            QuoteResponse response = restTemplate.getForObject(url, QuoteResponse.class);
+            return response.getQuoteData();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        // returning empty QuoteData if fetch fails
+        return new QuoteResponse.QuoteData();
     }
 
     public List<SearchStockResponse.SearchStockResponseData> searchStock(String query) {
