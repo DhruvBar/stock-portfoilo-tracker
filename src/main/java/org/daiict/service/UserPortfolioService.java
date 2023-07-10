@@ -46,6 +46,7 @@ public class UserPortfolioService {
         Float changePercent = (change * 100f) / addHoldingRequest.getPurchasePrice();
         userPortfolio.setChangeAmount(change);
         userPortfolio.setChangePercent(changePercent);
+a        userPortfolio.setTotalValue(addHoldingRequest.getAmount() * addHoldingRequest.getPurchasePrice());
         return userPortfolioRepository.save(userPortfolio);
     }
 

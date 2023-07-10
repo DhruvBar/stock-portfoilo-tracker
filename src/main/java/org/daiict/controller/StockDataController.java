@@ -2,8 +2,10 @@ package org.daiict.controller;
 
 import org.daiict.config.CustomUserDetails;
 import org.daiict.model.AddHoldingRequest;
+import org.daiict.model.CompanyDetail;
 import org.daiict.model.QuoteResponse;
 import org.daiict.model.SearchStockResponse;
+import org.daiict.repository.CompanyDetailRepository;
 import org.daiict.service.StockDataService;
 import org.daiict.service.UserPortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,18 @@ public class StockDataController {
     @Autowired
     private UserPortfolioService userPortfolioService;
 
+    @Autowired
+    private CompanyDetailRepository companyDetailRepository;
+
 
     @GetMapping("/quote")
     public QuoteResponse.QuoteData stockData(@RequestParam("symbol") String symbol) {
         return stockData.getStockQuote(symbol);
+    }
+
+    @GetMapping("/detail")
+    public CompanyDetail getCompanyDetail(@RequestParam("symbol") String symbol) {
+        return companyDetailRepository.findById(symbol).get();
     }
 
     @GetMapping("/search")

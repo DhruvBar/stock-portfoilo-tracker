@@ -22,6 +22,7 @@ public class UserPortfolio {
 
     private Float purchasePrice;
     private Float amount;
+    private Float totalValue;
     private Float changeAmount;
     private Float changePercent;
 }
