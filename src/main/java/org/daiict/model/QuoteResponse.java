@@ -19,21 +19,21 @@ public class QuoteResponse {
         @JsonProperty("01. symbol")
         private String symbol;
         @JsonProperty("02. open")
-        private String open;
+        private Float open;
         @JsonProperty("03. high")
-        private String high;
+        private Float high;
         @JsonProperty("04. low")
-        private String low;
+        private Float low;
         @JsonProperty("05. price")
-        private String price;
+        private Float price;
         @JsonProperty("06. volume")
-        private String volume;
+        private Long volume;
         @JsonProperty("07. latest trading day")
         private String latestTradingDay;
         @JsonProperty("08. previous close")
-        private String previousClose;
+        private Float previousClose;
         @JsonProperty("09. change")
-        private String change;
+        private Float change;
         @JsonProperty("10. change percent")
         private String changePercent;
     }

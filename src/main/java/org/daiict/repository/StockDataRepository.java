@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StockDataRepository extends JpaRepository<StockData, Integer> {
 
-    StockData findStockDataBySymbol(String symbol);
+    StockData findFirstBySymbol(String symbol);
 
 }

@@ -24,8 +24,8 @@ public class StockData {
     private String latestTradingDay;
     private Float previousClose;
     private Float changeValue;
-    private Float changePercent;
-    private Float sma;
-    private Float macd;
-    private Float stoch;
+    private String changePercent;
+    private Double sma;
+    private Double macd;
+    private Double rsi;
 }
