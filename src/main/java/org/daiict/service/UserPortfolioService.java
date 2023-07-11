@@ -58,7 +58,11 @@ public class UserPortfolioService {
             log.info("Stock data not present, creating stock data entity");
             QuoteResponse.QuoteData quoteData = stockDataService.getStockQuote(symbol);
             CompanyDetail companyDetail = stockDataService.getCompanyDetail(symbol);
-            companyDetailRepository.save(companyDetail);
+            try {
+                companyDetailRepository.save(companyDetail);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             Double macd = stockDataService.getMACD(symbol);
             Double rsi = stockDataService.getRSI(symbol);
             Double sma = stockDataService.getSMA(symbol);
