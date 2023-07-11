@@ -1,6 +1,5 @@
 package org.daiict.service;
 
-import org.daiict.auth.AuthEntryPointJwt;
 import org.daiict.model.*;
 import org.daiict.repository.CompanyDetailRepository;
 import org.daiict.repository.StockDataRepository;
@@ -10,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class UserPortfolioService {
@@ -35,7 +36,7 @@ public class UserPortfolioService {
         StockData stockData = getOrCrateStockDataEntity(addHoldingRequest.getSymbol());
         UserDetail userDetail = userRepository.findByEmail(userId);
         UserPortfolio userPortfolio = userPortfolioRepository.findFirstByUserDetailAndStockData(userDetail, stockData);
-        if(userPortfolio == null){
+        if (userPortfolio == null) {
             userPortfolio = new UserPortfolio();
         }
         userPortfolio.setStockData(stockData);
@@ -46,7 +47,8 @@ public class UserPortfolioService {
         Float changePercent = (change * 100f) / addHoldingRequest.getPurchasePrice();
         userPortfolio.setChangeAmount(change);
         userPortfolio.setChangePercent(changePercent);
-a        userPortfolio.setTotalValue(addHoldingRequest.getAmount() * addHoldingRequest.getPurchasePrice());
+        userPortfolio.setTotalValue(addHoldingRequest.getAmount() * addHoldingRequest.getPurchasePrice());
+        userPortfolio.setPurchaseDate(addHoldingRequest.getPurchaseDate());
         return userPortfolioRepository.save(userPortfolio);
     }
 
@@ -77,6 +79,11 @@ a        userPortfolio.setTotalValue(addHoldingRequest.getAmount() * addHoldingR
             return stockDataRepository.save(stockData);
         }
         return stockData;
+    }
+
+    public List<UserPortfolio> getUserPortfolio(String userId){
+        UserDetail userDetail = userRepository.findByEmail(userId);
+        return userPortfolioRepository.findAllByUserDetail(userDetail);
     }
 
 }

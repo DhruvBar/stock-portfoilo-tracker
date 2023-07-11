@@ -3,6 +3,7 @@ package org.daiict.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -25,4 +26,5 @@ public class UserPortfolio {
     private Float totalValue;
     private Float changeAmount;
     private Float changePercent;
+    private Date purchaseDate;
 }

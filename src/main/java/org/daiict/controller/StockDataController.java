@@ -1,10 +1,7 @@
 package org.daiict.controller;
 
 import org.daiict.config.CustomUserDetails;
-import org.daiict.model.AddHoldingRequest;
-import org.daiict.model.CompanyDetail;
-import org.daiict.model.QuoteResponse;
-import org.daiict.model.SearchStockResponse;
+import org.daiict.model.*;
 import org.daiict.repository.CompanyDetailRepository;
 import org.daiict.service.StockDataService;
 import org.daiict.service.UserPortfolioService;
@@ -15,6 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,14 +44,26 @@ public class StockDataController {
     }
 
     @PostMapping("/add/holding")
-    public ResponseEntity<?> addUserHolding(@RequestBody AddHoldingRequest addHoldingRequest){
-        CustomUserDetails userDetails =  (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<?> addUserHolding(@RequestBody AddHoldingRequest addHoldingRequest) {
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            userPortfolioService.saveHolding(addHoldingRequest, userDetails.getUsername());
-            return ResponseEntity.ok("Successfully added holding");
-        }catch (Exception e){
+            UserPortfolio userPortfolio = userPortfolioService.saveHolding(addHoldingRequest, userDetails.getUsername());
+            return ResponseEntity.ok(userPortfolio);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new ResponseEntity<>("Failed to add holding", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @GetMapping("/portfolio")
+    public ResponseEntity<List<UserPortfolio>> getUserPortfolio() {
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try {
+            List<UserPortfolio> userPortfolio = userPortfolioService.getUserPortfolio(userDetails.getUsername());
+            return ResponseEntity.ok(userPortfolio);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
