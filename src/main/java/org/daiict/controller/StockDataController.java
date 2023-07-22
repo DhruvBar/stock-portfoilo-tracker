@@ -55,6 +55,18 @@ public class StockDataController {
         return new ResponseEntity<>("Failed to add holding", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @GetMapping("/remove/holding")
+    public ResponseEntity<?> removeUserHolding(@RequestParam("symbol") String symbol) {
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try {
+            userPortfolioService.removeHolding(symbol, userDetails.getUsername());
+            return ResponseEntity.ok("deleted");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Failed to delete holding", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @GetMapping("/portfolio")
     public ResponseEntity<List<UserPortfolio>> getUserPortfolio() {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

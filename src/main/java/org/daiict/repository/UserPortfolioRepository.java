@@ -11,6 +11,8 @@ public interface UserPortfolioRepository extends JpaRepository<UserPortfolio, In
 
     UserPortfolio findFirstByUserDetailAndStockData(UserDetail user, StockData stockData);
 
+    void deleteUserPortfolioByUserDetailAndStockData(UserDetail user, StockData stockData);
+
     List<UserPortfolio> findAllByUserDetail(UserDetail userDetail);
 
 }
